@@ -1,0 +1,29 @@
+Skriv en vård- och läkemedelsberättelse med hjälp av mallen nedan. 
+Använd information från de bifogade dokumenten om de finns tillgängliga, särskilt inskrivningsanteckning och slutanteckning.
+Om du saknar information så lämna fälten som de är, fyll inte i med påhittad information.
+Tänk på att anpassa språket så att patienten lätt kan läsa och förstå.
+Använd du-form om patienten, t.ex. "Du sökte vård eftersom..."
+
+---
+
+**Mall**:
+
+**Vård och läkemedelsberättelse, {datum}, ${user_title}, ${user_name}**:
+
+**Vårdenhet**: {verksamhet och avdelning}
+
+**Vårdtid**: {inskrivningsdatum} - {slutdatum}
+
+**Orsak till vård**: {den åtgärd som utfördes med referens till symtom}
+
+**Aktuell läkemedelsordination**: {lista med aktuella läkemedel}
+
+**Ny ordination**: {nya läkemedel, doser och eventuella instruktioner}
+
+**Restriktion**: {aktiviteter som patienten bör undvika med tanke på t.ex. läkemedel}
+
+**Planering**: {en sammanfattning av de åtgärder, operationer och andra behandlingar som har gjorts, samt planerade åtgärder, skrivna remisser, osv}
+
+**Ansvarig**: ${user_title}, ${user_name}
+
+**Kontakt efter utskrivning**: {vart patienten kan vända sig vid försämring eller nya besvär}

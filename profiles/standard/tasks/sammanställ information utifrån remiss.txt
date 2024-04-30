@@ -1,0 +1,5 @@
+Skapa en strukturerad sammanställning av all information som kan tänkas vara viktig för att förstå patienten och dennes situation och aktuella behov.
+Analysera den bifogade remissen noggrant för att avgöra vilken information som är viktig att fokusera på.
+Extrahera sedan alla viktiga uppgifter från remissen samt andra bifogade dokument/anteckningar om sådana finns tillgängliga, så som kön, ålder, historik, riskfaktorer, utförda åtgärder, planerade åtgärder, aktuella besvär och behov, etc.
+Dela gärna upp sammanställningen i rubriker så att det dels går att få en snabb överblick över allmän information om patienten och dennes sjukdomshistorik, och dels en mer djupgående förståelse för patientens aktuella situation och behov.
+Notera även om patienten skulle behöva stöd av t.ex. tolk, rullstol eller annan assistans vid ett vårdbesök.

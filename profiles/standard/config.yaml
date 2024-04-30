@@ -1,0 +1,67 @@
+vars:
+  user_title: "Överläkare"
+  user_name: "Läk Läksson"
+  patient_id: "pat1234"
+assistant: "standard"
+model: "gpt-3.5-turbo-0125"
+models: ["gpt-3.5-turbo-0125", "gpt-4-turbo"]
+selected_sources: ["sammanfattning"]
+history_size: 20
+debug: False
+
+# Vector database
+vector:
+  exclude_keys: 
+    metadata: ["text"]
+    document": []
+  params:
+    n_results: 5
+
+api:
+  # NOTE: Leave values empty if they should be taken from .env (the key names are identical)
+  API_TYPE: "openai"
+
+avatars:
+  user: "👩‍⚕️"
+  assistant: "🤖"
+
+app:
+  show_disclaimer: False
+  show_footer: False
+  logo_path: "assets/logo_darkmode.png"
+
+  title: >
+    AI-Anamnes
+  subtitles: ["Inloggad som: `${user_name}`", "Patient-ID: `${patient_id}`"]
+
+  footer_body: >
+    Chattboten utvecklas av <a href='mailto:isak.barbopoulos@vgregion.se'>Isak Barbopoulos</a>, <a href='mailto:sara.lundell@vgregion.se'>Sara Lundell</a> och <a href='mailto:anna.rosen@vgregion.se'>Anna Rosén</a> på **Kompetenscentrum AI** (SU) i samarbete med **Regional Vårdanalys** (KsD) och **AI-plattformen** (KsD). <br><br>Skicka gärna frågor, önskemål och feedback till <a href='mailto:isak.barbopoulos@vgregion.se'>Isak</a>.
+
+  disclaimer_label: > 
+    Användarvillkor & Tips
+
+  disclaimer: >
+    **Följande villkor gäller när du använder appen:**
+    - **OBS!** Användning av chattboten i ditt dagliga arbete görs på **egen risk**
+    - Chattboten är under tidig utveckling och är främst till för demo-syften
+    - Appen är inte säkerhetsklassad, så skriv inte in information som du inte annars skulle dela på internet
+    - Tänk på att chattboten kan ha fel och hitta på
+    - Sprid inte vidare länken till andra
+    - Vi tar inte något ansvar för hur chattboten används eller hur den svarar
+    - Notera att sidan kan försvinna och funktioner kan läggas till, gå sönder och tas bort utan förvarning
+
+    Lite tips och råd för att komma igång
+
+    **Länkar med användbar info**:
+    - [AI och språkmodeller inom VGR](https://insidan.vgregion.se/delade-menyer/stod-och-tjanster/amnen-a-o/digitalisering/kontakt/artificiell-intelligens/)
+    - [Riktlinjer för användning av chattbotar inom VGR](https://insidan.vgregion.se/nyheter-publik/nyheter-it/anvandning-av-ai-baserade-chattbottar-i-vgr/)
+    - [Datasäkerhet för Azure OpenAI Service](https://learn.microsoft.com/en-us/legal/cognitive-services/openai/data-privacy)
+    - [Tips för att komma igång med prompt engineering](https://www.imaginarycloud.com/blog/chatgpt-prompt-engineering/)
+
+    **Uppgifter**:
+    - Välj, modifiera eller skapa en ny uppgift genom att fylla i specifika instruktioner i textrutan
+    - Du kan ladda upp en eller flera filer i txt-, pdf-, csv-, eller docx-format
+    - De filer du laddas upp kommer automatiskt kopplas till den valda profilen
+    - När du har laddat upp dokument så kan du ställa frågor som rör innehållet i dem
+    - Chattboten vet vad filerna heter, så du kan t.ex. fråga "Vad står det om det eller det i fil_si_och_så.pdf?"
+    - Eftersom du kan ladda upp fler än ett dokument så kan du även be chattboten jämföra dokumenten mot varandra
