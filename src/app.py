@@ -20,7 +20,7 @@ def main(profile: str = "standard", profiles_path: str = "profiles/"):
 
     # Add params from URL query
     # NOTE: Add attributes to bot by entering <url>/?key=val
-    query = st.experimental_get_query_params()
+    query = st.query_params
     if "profile" in query:
         query = {**{"profile": query.pop("profile")}, **query}  # Profile must be 1st key or it will overwrite others
     for key, val in query.items():
@@ -46,7 +46,7 @@ def main(profile: str = "standard", profiles_path: str = "profiles/"):
 
         with st.expander("Uppgifter"):
             st.markdown("#### **Instruktioner**")
-            st.write("Välj eller skriv egna instruktioner")
+            st.write("Välj uppgift eller skapa en egen")
             task_id = ""
             tasks = [task_id for task_id, instruction in bot.tasks.items() if len(instruction) > 0]
             if len(tasks) > 0:

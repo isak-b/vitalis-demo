@@ -1,5 +1,5 @@
 import io
-import PyPDF2
+import pypdf
 import docx
 import pandas as pd
 from uuid import uuid4
@@ -37,7 +37,7 @@ def read_file(file, remove_prefix: str = None, id_col: str = "id"):
         else:
             docs = [{"id": doc_id, "text": file.read().decode("utf-8")}]
     elif file_type == "pdf":
-        pages = PyPDF2.PdfReader(file).pages
+        pages = pypdf.PdfReader(file).pages
         docs = [{"id": doc_id, "text": "\n".join([page.extract_text() for page in pages])}]
     elif file_type == "docx":
         paragraphs = docx.Document(file).paragraphs
