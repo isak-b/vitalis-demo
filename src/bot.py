@@ -147,4 +147,4 @@ class ChatBot:
 
     @property
     def client(self):
-        return get_client(**vars(self.api))
+        return get_client()

@@ -2,15 +2,24 @@ import os
 from openai import OpenAI
 
 
-def get_client(
-    API_TYPE: str = None,
-    OPENAI_API_KEY: str = None,
-):
-    """Configures and returns a chat client (e.g., openai=openai.OpenAI)"""
-    if API_TYPE == "openai":
-        client = OpenAI(
-            api_key=OPENAI_API_KEY or os.getenv("OPENAI_API_KEY"),
+def check_api_key():
+    if not os.getenv("OPENAI_API_KEY"):
+        return False
+
+    client = get_client()
+    try:
+        _ = client.completions.create(
+            model="davinci-002",
+            prompt="This is a test.",
+            max_tokens=5
         )
+    except Exception as e:
+        return e
     else:
-        raise ValueError(f"{API_TYPE=} is not recognized")
+        return True
+
+
+def get_client():
+    """Configures and returns a chat client"""
+    client = OpenAI()
     return client

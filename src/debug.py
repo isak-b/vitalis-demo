@@ -19,15 +19,6 @@ def get_debug_info(bot):
     with st.expander("model", expanded=False):
         st.write(f"{bot.model = }")
         st.write(f"{bot.models = }")
-    with st.expander("api_client", expanded=False):
-        st.write(
-            {
-                "api_type:": type(bot.client).__name__,
-                "api_version:": bot.client._api_version,
-                "api_endpoint:": bot.client._base_url,
-                "api_key:": bot.client.api_key[:3] + "***",
-            }
-    )
     with st.expander("default cfg", expanded=False):
         st.write("bot.cfg_default:", bot.profiles["standard"])
     with st.expander("profile cfg", expanded=False):

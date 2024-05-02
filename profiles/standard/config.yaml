@@ -17,10 +17,6 @@ vector:
   params:
     n_results: 5
 
-api:
-  # NOTE: Leave values empty if they should be taken from .env (the key names are identical)
-  API_TYPE: "openai"
-
 avatars:
   user: "👩‍⚕️"
   assistant: "🤖"
