@@ -31,7 +31,7 @@ app:
   subtitles: ["Inloggad som: `${user_name}`", "Patient-ID: `${patient_id}`"]
 
   footer_body: >
-    Chattboten utvecklas av <a href='mailto:isak.barbopoulos@vgregion.se'>Isak Barbopoulos</a>, <a href='mailto:anna.rosen@vgregion.se'>Anna Rosén</a> och <a href='mailto:sara.lundell@vgregion.se'>Sara Lundell</a> på **Kompetenscentrum AI** (Sahlgrenska) i samarbete med <a href='mailto:Robin.Melander@vgregion.se'>Robin Melander (Neurologi, Sahlgrenska)</a>) och <a href='mailto:Erik.Thurin@vgregion.se'>Erik Thurin (Radiologi, Sahlgrenska)</a>), samt studenterna <a href='mailto:nfelix@chalmers.se'>Felix Nilsson</a>, <a href='mailto:elinberthag1@gmail.com'>Elin Berthag</a>, <a href='mailto:lundalb@chalmers.se'>Albert Lund</a> och <a href='mailto:amanac@student.chalmers.se'>Amanda Nackovska</a> på Chalmers.
+    Chattboten utvecklas av **Isak Barbopoulos**, **Anna Rosén** och **Sara Lundell** på Kompetenscentrum AI (Sahlgrenska) i samarbete med **Erik Thurin** (Radiologi, Sahlgrenska) och **Robin Melander** (Neurologi, Sahlgrenska), samt mastersstudenterna **Albert Lund**, **Amanda Nackovska**, **Elin Berthag** och **Felix Nilsson** på Chalmers. <br><br>*OBS! Journalanteckningarna är påhittade för demonstrationssyften.*
 
   disclaimer_label: > 
     Användarvillkor & Tips
