@@ -23,7 +23,7 @@ avatars:
 
 app:
   show_disclaimer: False
-  show_footer: False
+  show_footer: True
   logo_path: "assets/logo_darkmode.png"
 
   title: >
@@ -31,7 +31,7 @@ app:
   subtitles: ["Inloggad som: `${user_name}`", "Patient-ID: `${patient_id}`"]
 
   footer_body: >
-    Chattboten utvecklas av <a href='mailto:isak.barbopoulos@vgregion.se'>Isak Barbopoulos</a>, <a href='mailto:sara.lundell@vgregion.se'>Sara Lundell</a> och <a href='mailto:anna.rosen@vgregion.se'>Anna Rosén</a> på **Kompetenscentrum AI** (SU) i samarbete med **Regional Vårdanalys** (KsD) och **AI-plattformen** (KsD). <br><br>Skicka gärna frågor, önskemål och feedback till <a href='mailto:isak.barbopoulos@vgregion.se'>Isak</a>.
+    Chattboten utvecklas av <a href='mailto:isak.barbopoulos@vgregion.se'>Isak Barbopoulos</a>, <a href='mailto:anna.rosen@vgregion.se'>Anna Rosén</a> och <a href='mailto:sara.lundell@vgregion.se'>Sara Lundell</a> på **Kompetenscentrum AI** (Sahlgrenska) i samarbete med <a href='mailto:Robin.Melander@vgregion.se'>Robin Melander (Neurologi, Sahlgrenska)</a>) och <a href='mailto:Erik.Thurin@vgregion.se'>Erik Thurin (Radiologi, Sahlgrenska)</a>), samt studenterna <a href='mailto:nfelix@chalmers.se'>Felix Nilsson</a>, <a href='mailto:elinberthag1@gmail.com'>Elin Berthag</a>, <a href='mailto:lundalb@chalmers.se'>Albert Lund</a> och <a href='mailto:amanac@student.chalmers.se'>Amanda Nackovska</a> på Chalmers.
 
   disclaimer_label: > 
     Användarvillkor & Tips
