@@ -23,7 +23,7 @@ avatars:
 
 app:
   show_disclaimer: False
-  show_footer: True
+  show_footer: False
   logo_path: "assets/logo_darkmode.png"
 
   title: >
@@ -31,7 +31,7 @@ app:
   subtitles: ["Inloggad som: `${user_name}`", "Patient-ID: `${patient_id}`"]
 
   footer_body: >
-    Chattboten utvecklas av **Isak Barbopoulos**, **Anna Rosén** och **Sara Lundell** på Kompetenscentrum AI (Sahlgrenska) i samarbete med **Erik Thurin** (Radiologi, Sahlgrenska) och **Robin Melander** (Neurologi, Sahlgrenska), samt mastersstudenterna **Albert Lund**, **Amanda Nackovska**, **Elin Berthag** och **Felix Nilsson** på Chalmers. <br><br>*OBS! Journalanteckningarna är påhittade för demonstrationssyften.*
+    ...
 
   disclaimer_label: > 
     Användarvillkor & Tips

@@ -17,6 +17,10 @@ def main():
     # Initialize ChatBot & app config
     if "bot" not in state:
         state.bot = ChatBot()
+        intro_msg = "**Välkommen till Västra Götalandsregionens monter!**\n\nJag är en chattbot som utvecklas av **Isak Barbopoulos**, **Anna Rosén** och **Sara Lundell** på Kompetenscentrum AI (Sahlgrenska) i nära samarbete med **Erik Thurin** (Radiologi, Sahlgrenska), **Robin Melander** (Neurologi, Sahlgrenska) och **Bertil Hjelm** (Kärlkirurgi, Sahlgrenska), samt mastersstudenterna **Albert Lund**, **Amanda Nackovska**, **Elin Berthag** och **Felix Nilsson** på Chalmers.\n\nJag kan hjälpa dig att sammanfatta och analysera `patient-1234`s journalanteckningar samt svara på frågor om patientens sökorsaker och behandlingar.\n\nTesta mig gärna genom att ställa olika frågor eller ge mig en uppgift att lösa!\n\n"
+        state.bot.history.append(
+            {"role": "assistant", "content": intro_msg, "docs": {"task": {}, "context": {}, "vector": {}}}
+        )
     bot = state.bot
 
     # Add params from URL query
@@ -39,29 +43,24 @@ def main():
         with col2:
             st.markdown(f"# {bot.app.title}")
             st.write(f"Inloggad som: `{os.environ['USER_NAME']}`")
-            st.write(f"Patient-ID: `pat1234`")
+            st.write(f"Patient-ID: `patient-1234`")
         if bot.app.show_disclaimer is True:
             with st.expander(bot.app.disclaimer_label, expanded=False):
                 st.subheader(bot.app.disclaimer)
 
-        with st.expander("Uppgifter"):
-            st.markdown("#### **Instruktioner**")
-            st.write("Välj uppgift eller skapa en egen")
+        with _bottom.expander("Välj en uppgift"):
             task_id = ""
             tasks = [task_id for task_id, instruction in bot.tasks.items() if len(instruction) > 0]
             if len(tasks) > 0:
-                default_id = "standard" if "standard" in tasks else "ny"
+                default_id = "standard" if "standard" in tasks else "ny uppgift"
                 task_id = st.radio(
                     "Mall:",
-                    tasks + ["ny"],
-                    index=(tasks + ["ny"]).index(default_id),
+                    tasks + ["ny uppgift"],
+                    index=(tasks + ["ny uppgift"]).index(default_id),
                     key="task_radio",
                     label_visibility="collapsed",
                 )
             question = st.text_area("Instruktioner:", bot.tasks.get(task_id, ""), key="task_text", label_visibility="collapsed")
-
-            st.markdown("#### **Dokument**")
-            st.write("Välj vilka dokument som hör till uppgiften")
             sources = bot.sources.query("source not in @bot.selected_sources")["id"].unique()
             task_sources = st.multiselect("Bifogade dokument:", sources, placeholder="Välj dokument", label_visibility="collapsed")
 
@@ -71,7 +70,7 @@ def main():
 
     # Chat input
     with st.container():
-        question = _bottom.chat_input("Skriv din fråga")
+        question = _bottom.chat_input("Skriv en fråga")
         if question:
             bot.chat(question)
 
