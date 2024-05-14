@@ -17,7 +17,7 @@ def main():
     # Initialize ChatBot & app config
     if "bot" not in state:
         state.bot = ChatBot()
-        intro_msg = "**Välkommen till Västra Götalandsregionens monter!**\n\nJag är en chattbot som utvecklas av **Isak Barbopoulos**, **Anna Rosén** och **Sara Lundell** på Kompetenscentrum AI (Sahlgrenska) i nära samarbete med **Erik Thurin** (Radiologi, Sahlgrenska), **Robin Melander** (Neurologi, Sahlgrenska) och **Bertil Hjelm** (Kärlkirurgi, Sahlgrenska), samt mastersstudenterna **Albert Lund**, **Amanda Nackovska**, **Elin Berthag** och **Felix Nilsson** på Chalmers.\n\nJag kan hjälpa dig att sammanfatta och analysera `patient-1234`s journalanteckningar samt svara på frågor om patientens sökorsaker och behandlingar.\n\nTesta mig gärna genom att ställa olika frågor eller ge mig en uppgift att lösa!\n\n"
+        intro_msg = "**Välkommen till Västra Götalandsregionens monter!**\n\nJag är en chattbot som utvecklas av **Isak Barbopoulos**, **Anna Rosén** och **Sara Lundell** på Kompetenscentrum AI (Sahlgrenska) i nära samarbete med **Erik Thurin** (Radiologi, Sahlgrenska), **Robin Melander** (Neurologi, Sahlgrenska) och **Bertil Hjelm** (Kärlkirurgi, Sahlgrenska), samt mastersstudenterna **Albert Lund**, **Amanda Nackovska**, **Elin Berthag** och **Felix Nilsson** på Chalmers.\n\nJag kan hjälpa dig att sammanfatta och analysera den fiktiva patienten `pat-1234`s journalanteckningar samt svara på frågor om patientens sökorsaker och behandlingar.\n\nTesta mig gärna genom att ställa olika frågor om patienten, patientens sjukhusvistelse eller ge mig en uppgift att lösa!\n\n"
         state.bot.history.append(
             {"role": "assistant", "content": intro_msg, "docs": {"task": {}, "context": {}, "vector": {}}}
         )
@@ -42,12 +42,14 @@ def main():
             st.image(bot.app.logo_path)
         with col2:
             st.markdown(f"# {bot.app.title}")
-            st.write(f"Inloggad som: `{os.environ['USER_NAME']}`")
-            st.write(f"Patient-ID: `patient-1234`")
+            st.write(f"Inloggad som: `{os.getenv('USER_NAME', 'Läk Läksson')}`")
+            st.write(f"Patient-ID: `pat-1234`")
         if bot.app.show_disclaimer is True:
             with st.expander(bot.app.disclaimer_label, expanded=False):
                 st.subheader(bot.app.disclaimer)
 
+    # Chat input
+    with st.container():
         with _bottom.expander("Välj en uppgift"):
             task_id = ""
             tasks = [task_id for task_id, instruction in bot.tasks.items() if len(instruction) > 0]
@@ -62,14 +64,13 @@ def main():
                 )
             question = st.text_area("Instruktioner:", bot.tasks.get(task_id, ""), key="task_text", label_visibility="collapsed")
             sources = bot.sources.query("source not in @bot.selected_sources")["id"].unique()
-            task_sources = st.multiselect("Bifogade dokument:", sources, placeholder="Välj dokument", label_visibility="collapsed")
+            #task_sources = st.multiselect("Bifogade dokument:", sources, placeholder="Välj dokument", label_visibility="collapsed")
 
             complete_task = st.button("Skicka")
             if complete_task:
-                bot.task(question, task_sources=task_sources)
+                bot.task(question)
+                #bot.task(question, task_sources=task_sources)
 
-    # Chat input
-    with st.container():
         question = _bottom.chat_input("Skriv en fråga")
         if question:
             bot.chat(question)

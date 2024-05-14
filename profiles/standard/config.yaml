@@ -1,11 +1,11 @@
 vars:
   user_title: "Överläkare"
   user_name: "Läk Läksson"
-  patient_id: "pat1234"
+  patient_id: "pat-1234"
 assistant: "standard"
 model: "gpt-3.5-turbo-0125"
 models: ["gpt-3.5-turbo-0125", "gpt-4-turbo"]
-selected_sources: ["sammanfattning"]
+selected_sources: ["sammanfattning", "journal"]
 history_size: 20
 debug: False
 
