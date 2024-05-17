@@ -16,8 +16,8 @@ from src.api import check_api_key
 def main():
     # Initialize ChatBot & app config
     if "bot" not in state:
-        state.bot = ChatBot()
-        intro_msg = "**Välkommen till Västra Götalandsregionens monter!**\n\nJag är en chattbot som utvecklas av **Isak Barbopoulos**, **Anna Rosén** och **Sara Lundell** på Kompetenscentrum AI (Sahlgrenska) i nära samarbete med **Erik Thurin** (Radiologi, Sahlgrenska), **Robin Melander** (Neurologi, Sahlgrenska) och **Bertil Hjelm** (Kärlkirurgi, Sahlgrenska), samt mastersstudenterna **Albert Lund**, **Amanda Nackovska**, **Elin Berthag** och **Felix Nilsson** på Chalmers.\n\nJag kan hjälpa dig att sammanfatta och analysera den fiktiva patienten `pat-1234`s journalanteckningar samt svara på frågor om patientens sökorsaker och behandlingar.\n\nTesta mig gärna genom att ställa olika frågor om patienten, patientens sjukhusvistelse eller ge mig en uppgift att lösa!\n\n"
+        state.bot = ChatBot(api_key=state.api_key)
+        intro_msg = "Jag är en chattbot som utvecklas av **Isak Barbopoulos**, **Anna Rosén** och **Sara Lundell** på Kompetenscentrum AI (Sahlgrenska) i nära samarbete med **Erik Thurin** (Radiologi, Sahlgrenska), **Robin Melander** (Neurologi, Sahlgrenska) och **Bertil Hjelm** (Kärlkirurgi, Sahlgrenska), samt mastersstudenterna **Albert Lund**, **Amanda Nackovska**, **Elin Berthag** och **Felix Nilsson** från Chalmers.\n\nJag kan hjälpa dig att sammanfatta och analysera den fiktive patienten `pat-1234`s journalanteckningar samt svara på frågor om patientens sökorsaker och behandlingar.\n\nTesta mig gärna genom att ställa olika frågor om patienten, patientens sjukhusvistelse eller tryck på fliken 'Välj en uppgift' för att ge mig en uppgift att lösa!\n\n"
         state.bot.history.append(
             {"role": "assistant", "content": intro_msg, "docs": {"task": {}, "context": {}, "vector": {}}}
         )
@@ -114,8 +114,7 @@ if __name__ == "__main__":
         page_icon=":random:",
         layout="wide",
     )
-
-    if check_api_key() is True:
-        main()
-    else:
+    if "api_key" not in state or check_api_key(state.api_key) is False:
         st.switch_page("pages/login.py")
+    else:
+        main()

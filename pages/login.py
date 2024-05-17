@@ -11,17 +11,19 @@ from src.api import check_api_key
 
 
 def submit():
-    os.environ["OPENAI_API_KEY"] = f"sk-proj-{state.pw}{os.environ['PARTIAL_OPENAI_KEY']}"
+    state.api_key = f"sk-proj-{state.pw}{os.environ['PARTIAL_OPENAI_KEY']}"
     state.attempts += 1
     state.pw = ""
 
 def main():
+    if "api_key" not in state:
+        state.api_key = ""
     if "pw" not in state:
         state.pw = ""
     if "attempts" not in state:
         state.attempts = 0
 
-    if check_api_key() is True:
+    if check_api_key(state.api_key) is True:
         st.switch_page("app.py")
     else:
         st.title("#")

@@ -2,14 +2,14 @@ import os
 import chromadb
 import pandas as pd
 
-from .api import get_client
 from .utils import merge_cfgs, load_profiles, load_assistants, load_tasks, DictObject
 from .documents import read_file, process_doc, get_docs, get_msg
 from .vector import vectorize_dataframe, query_vector_table
-
+from .api import get_client
 
 class ChatBot:
-    def __init__(self, profile: str = "standard", profiles_path: str = "profiles/"):
+    def __init__(self, api_key: str, profile: str = "standard", profiles_path: str = "profiles/"):
+        self.client = get_client(api_key=api_key)
         self.vector_con = chromadb.Client()
         self.profiles = load_profiles(path=profiles_path, filename="config.yaml")
         self.profile = profile
@@ -144,7 +144,3 @@ class ChatBot:
     def assistant(self, value: str):
         self._assistant = value
         self.prompt = self.assistants.get(value, "")
-
-    @property
-    def client(self):
-        return get_client()
